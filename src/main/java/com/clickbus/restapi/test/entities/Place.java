@@ -17,12 +17,12 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Entity(name="Place")
 @Table(name="place")
 public class Place {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name="name")
     private String name;
