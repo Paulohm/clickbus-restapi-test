@@ -1,19 +1,22 @@
 package com.clickbus.restapi.test.entities;
 
-import lombok.Builder;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Builder
+@Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "place_client_application")
 public class PlaceClientApplication {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer placeClientId;
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, optional = false)
-    private Place place;
+    @EqualsAndHashCode.Exclude private Place place;
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, optional = false)
-    private ClientApplication clientApplication;
+    @EqualsAndHashCode.Exclude private ClientApplication clientApplication;
 
 }

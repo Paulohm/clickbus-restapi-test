@@ -3,6 +3,7 @@ package com.clickbus.restapi.test.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -13,13 +14,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Builder
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Entity(name="Country")
 @Table(name="country")
 public class Country {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "name")
     private String name;
